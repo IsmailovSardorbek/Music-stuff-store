@@ -1,0 +1,245 @@
+.page-nav {
+  background-color: #222;
+  min-height: 50px;
+  padding: 25px 0;
+  transition: all 0.4s ease-out;
+  z-index: 9999999999;
+  position: fixed;
+  width: 100%;
+}
+
+.nav-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 27px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  text-transform: uppercase;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.nav-link:hover {
+  color: rgb(216, 125, 74);
+}
+
+.cart {
+  color: #fff;
+  font-size: 30px;
+}
+
+.nav-end > .account-details {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.account-details:hover {
+  color: rgb(216, 125, 74);
+  transition: all 0.2s ease;
+}
+
+.nav-end {
+  display: flex;
+  gap: 2.5rem;
+  position: relative;
+  align-items: center;
+}
+
+.shopping-cart {
+  position: relative;
+}
+
+.items-counter {
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  background: coral;
+  text-align: center;
+  border-radius: 100%;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart:hover {
+  color: rgb(216, 125, 74);
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.form-card {
+  position: absolute;
+  min-width: 300px;
+  right: -11px;
+  top: 66px;
+  background: #fff;
+  text-align: center;
+  padding: 15px 20px;
+  overflow: hidden;
+  border-radius: 10px;
+  max-width: 400px;
+}
+
+.card-image {
+  margin-bottom: 30px;
+}
+
+.card-text {
+  color: #888;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.login {
+  background: rgb(216, 125, 74);
+  padding: 10px 15px;
+  margin-bottom: 1rem;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.login:hover {
+  background: rgb(251, 175, 133);
+  transition: all 0.4s ease;
+}
+
+.signup {
+  background: rgb(241, 241, 241);
+  padding: 10px 15px;
+  text-decoration: none;
+  color: rgb(216, 125, 74);
+  display: block;
+}
+
+.signup:hover {
+  background: rgb(216, 125, 74);
+  color: rgb(241, 241, 241);
+  transition: all 0.4s ease;
+}
+
+.active-link {
+  color: rgb(216, 125, 74);
+}
+
+.user-profile {
+  font-size: 27px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.account-details span {
+  font-weight: 500;
+}
+
+.user-profile:hover {
+  color: rgb(216, 125, 74);
+  transition: 0.3s;
+}
+
+.menu-toggler {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  height: 35px;
+}
+
+.product-link-box {
+  background: rgb(241, 241, 241);
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  display: grid;
+  place-items: center;
+  min-width: 350px;
+}
+
+.nav-item-mobile a {
+  text-decoration: none;
+  color: #000;
+}
+
+.product-link-box:hover {
+  scale: 1.1;
+}
+
+.product-img {
+  width: 190px;
+  transform: translateY(-30%);
+  height: 130px;
+  scale: 0.8;
+}
+
+.product-link-box > h4 {
+  margin-bottom: 1rem;
+}
+
+.product-link-box:hover > h4 {
+  color: rgb(216, 125, 74);
+  transition: 0.2s;
+}
+
+.nav-list-mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.8rem;
+  list-style: none;
+  position: relative;
+}
+
+.product-link-box h4 {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-weight: 400;
+}
+
+.product-link-box h5 {
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.bs-icon {
+  color: rgb(216, 125, 74);
+}

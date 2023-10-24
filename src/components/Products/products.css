@@ -1,0 +1,8 @@
+.products__section {
+  margin: 7rem 1rem;
+  text-transform: uppercase;
+}
+
+.products__section > .nav-list-mobile {
+  gap: 8rem;
+}
