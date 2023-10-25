@@ -1,0 +1,38 @@
+.e-right .speaker-link {
+  background: transparent;
+  color: #000;
+  border: 1px solid #000;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.section-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.e-left {
+  border-radius: 10px;
+  width: max-content;
+  overflow: hidden;
+}
+
+.e-right {
+  display: flex;
+  align-items: center;
+  background: rgb(241, 241, 241);
+  border-radius: 10px;
+  height: auto;
+  padding: 1.5rem 5rem;
+  flex-grow: 1;
+  min-height: 300px;
+}
+
+.e-right h1 {
+  font-weight: 500;
+}
+
+.earphones-section > .hero-container {
+  padding: 1rem;
+}

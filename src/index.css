@@ -13,12 +13,9 @@
 
 img {
   max-width: 100% !important;
-  height: auto;
+  vertical-align: middle;
 }
 
-body {
-  color: #fff;
-}
 /* ================= MEDIA QUIERIES ================= */
 
 @media (width<= 768px) {
@@ -34,10 +31,6 @@ body {
     background: #fff;
     transition: all 0.3s ease;
     overflow-y: auto;
-  }
-
-  .nav-link {
-    color: red;
   }
 
   .nav-end {
@@ -59,5 +52,13 @@ body {
 
   .hero-subtitle {
     font-size: 30px;
+  }
+
+  .speaker-info .section-right {
+    text-align: center;
+  }
+
+  .speaker-link {
+    margin: auto;
   }
 }

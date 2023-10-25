@@ -1,30 +1,36 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { links } from '../../data/links.js'
 import { AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai'
-import { BsChevronDown, BsChevronUp, BsChevronRight } from 'react-icons/bs'
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
 import { FaBars } from 'react-icons/fa'
 import { IoCloseSharp } from 'react-icons/io5'
-import cardImage from '../../assets/images/1.jpg'
-import headphoneImg from '../../assets/images/headphones.png'
-import speakersImg from '../../assets/images/speakers.png'
-import earphonesImg from '../../assets/images/earphones.png'
+import cardImage from '../../../public/images/1.jpg'
+import MobileNav from '../MobileNav/MobileNav.js'
 import './navbar.css'
-import 'aos/dist/aos.css'
+import Context from '../../context/context.js'
 
 const Navbar = () => {
+  const { shoppingCartItems } = useContext<any>(Context)
+
   const [isFormOpen, setIsFormOpen] = useState(false)
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const [isMenuActive, setIsMenuActive] = useState(false)
 
+  const [scrollY, setScrollY] = useState(window.scrollY)
+
+  window.addEventListener('scroll', () => {
+    setScrollY(window.scrollY)
+  })
+
   window.addEventListener('resize', () => {
     setWindowWidth(window.innerWidth)
   })
 
   return (
-    <div className='page-nav'>
+    <div className={`page-nav ${scrollY > 90 ? 'scroll-header' : ''}`}>
       <div className='nav-container'>
         <div className='nav-content'>
           {windowWidth <= 768 && (
@@ -46,11 +52,19 @@ const Navbar = () => {
               audiophile
             </Link>
           </div>
-          <ul className={`nav-list ${isMenuActive ? 'menu-active' : ''}`}>
+          <ul
+            className={`nav-list ${isMenuActive ? 'menu-active' : ''}`}
+            data-aos={`${windowWidth > 768 ? 'fade-down' : ''}`}
+          >
             {windowWidth > 768 ? (
-              links.map((link) => {
+              links.map((link, index) => {
                 return (
-                  <li key={link} className='nav-item'>
+                  <li
+                    key={index}
+                    className='nav-item'
+                    data-aos='fade-down'
+                    data-aos-delay={index * 100}
+                  >
                     <Link
                       to={link === '' ? '/' : `/category/${link}`}
                       className='nav-link'
@@ -61,60 +75,16 @@ const Navbar = () => {
                 )
               })
             ) : (
-              <ul className='nav-list-mobile'>
-                <li className='nav-item-mobile'>
-                  <Link
-                    to='/category/headphones'
-                    onClick={() => setIsMenuActive(false)}
-                  >
-                    <div className='product-link-box'>
-                      <img src={headphoneImg} className='product-img' />
-                      <h5>headphones</h5>
-                      <h4>
-                        shop
-                        <BsChevronRight className='bs-icon' />
-                      </h4>
-                    </div>
-                  </Link>
-                </li>
-                <li className='nav-item-mobile'>
-                  <Link
-                    to='/category/speakers'
-                    onClick={() => setIsMenuActive(false)}
-                  >
-                    <div className='product-link-box'>
-                      <img src={speakersImg} className='product-img' />
-                      <h5>speakers</h5>
-                      <h4>
-                        shop
-                        <BsChevronRight className='bs-icon' />
-                      </h4>
-                    </div>
-                  </Link>
-                </li>
-                <li className='nav-item-mobile'>
-                  <Link
-                    to='/category/earphones'
-                    onClick={() => setIsMenuActive(false)}
-                  >
-                    <div className='product-link-box'>
-                      <img src={earphonesImg} className='product-img' />
-                      <h5>earphones</h5>
-                      <h4>
-                        shop
-                        <BsChevronRight className='bs-icon' />
-                      </h4>
-                    </div>
-                  </Link>
-                </li>
-              </ul>
+              <MobileNav />
             )}
           </ul>
 
           <div className='nav-end' data-aos='fade-left'>
             <div className='shopping-cart'>
               <AiOutlineShoppingCart className='cart' />
-              <div className='items-counter'>5</div>
+              {shoppingCartItems.length > 0 && (
+                <div className='items-counter'>{shoppingCartItems.length}</div>
+              )}
             </div>
             <div
               className='account-details'

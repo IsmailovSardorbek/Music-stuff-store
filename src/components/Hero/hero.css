@@ -6,6 +6,7 @@
 
 .hero {
   min-height: 100vh;
+  color: #fff;
 }
 
 .hero-title {
@@ -38,7 +39,7 @@
 }
 
 .hero {
-  background-image: url(../../assets/images/image-hero.jpg);
+  background-image: url(../../../public/images/image-hero.jpg);
   background-position: center center;
   background-size: cover;
 }

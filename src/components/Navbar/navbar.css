@@ -2,10 +2,15 @@
   background-color: #222;
   min-height: 50px;
   padding: 25px 0;
-  transition: all 0.4s ease-out;
+  transition: all 0.2s ease-out;
   z-index: 9999999999;
   position: fixed;
   width: 100%;
+}
+
+.page-nav.scroll-header {
+  background: #000;
+  padding: 18px 0;
 }
 
 .nav-container {
@@ -241,5 +246,5 @@
 }
 
 .bs-icon {
-  color: rgb(216, 125, 74);
+  color: rgb(216, 125, 74) ;
 }
