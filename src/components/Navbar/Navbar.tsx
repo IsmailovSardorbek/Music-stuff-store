@@ -7,11 +7,12 @@ import { FaBars } from 'react-icons/fa'
 import { IoCloseSharp } from 'react-icons/io5'
 import cardImage from '../../../public/images/1.jpg'
 import MobileNav from '../MobileNav/MobileNav.js'
-import './navbar.css'
 import Context from '../../context/context.js'
+import formatter from '../../utils/numberFormatter.js'
+import './navbar.css'
 
 const Navbar = () => {
-  const { shoppingCartItems } = useContext<any>(Context)
+  const { shoppingCartItems, setShoppingCartItems } = useContext<any>(Context)
 
   const [isFormOpen, setIsFormOpen] = useState(false)
 
@@ -21,6 +22,8 @@ const Navbar = () => {
 
   const [scrollY, setScrollY] = useState(window.scrollY)
 
+  const [isCartOpen, setIsCartOpen] = useState(false)
+
   window.addEventListener('scroll', () => {
     setScrollY(window.scrollY)
   })
@@ -28,6 +31,12 @@ const Navbar = () => {
   window.addEventListener('resize', () => {
     setWindowWidth(window.innerWidth)
   })
+
+  const removeFromCart = (id) => {
+    setShoppingCartItems((cartItems) => {
+      return cartItems.filter((item) => item.id !== id)
+    })
+  }
 
   return (
     <div className={`page-nav ${scrollY > 90 ? 'scroll-header' : ''}`}>
@@ -81,7 +90,10 @@ const Navbar = () => {
 
           <div className='nav-end' data-aos='fade-left'>
             <div className='shopping-cart'>
-              <AiOutlineShoppingCart className='cart' />
+              <AiOutlineShoppingCart
+                className='cart'
+                onClick={() => setIsCartOpen((open) => !open)}
+              />
               {shoppingCartItems.length > 0 && (
                 <div className='items-counter'>{shoppingCartItems.length}</div>
               )}
@@ -112,6 +124,50 @@ const Navbar = () => {
                       SIGN UP
                     </Link>
                   </div>
+                </div>
+              </div>
+            )}
+            {isCartOpen && (
+              <div className='shopping-cart-list'>
+                <div className='cart-content'>
+                  <ul>
+                    {shoppingCartItems.length > 0 ? (
+                      shoppingCartItems.map((cartItem) => (
+                        <li>
+                          <div className='c-left'>
+                            <img src={cartItem.productImgLink} />
+                            <div>
+                              <h6>
+                                {cartItem.name}
+                                &nbsp; &nbsp;
+                                {
+                                  shoppingCartItems.find(
+                                    (item) => item.name === cartItem.name
+                                  ).quantity
+                                }
+                                x
+                              </h6>
+                              <p>
+                                {formatter
+                                  .format(cartItem.price)
+                                  .replace(/us/i, '')}
+                              </p>
+                            </div>
+                          </div>
+                          <div className='c-right'>
+                            <button
+                              className='remove-btn'
+                              onClick={() => removeFromCart(cartItem.id)}
+                            >
+                              &times;
+                            </button>
+                          </div>
+                        </li>
+                      ))
+                    ) : (
+                      <p>No Products Added yet</p>
+                    )}
+                  </ul>
                 </div>
               </div>
             )}

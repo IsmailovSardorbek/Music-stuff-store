@@ -6,6 +6,11 @@
   margin-top: 1rem;
 }
 
+.e-right .speaker-link:hover {
+  color: #fff;
+  background: #000;
+}
+
 .section-wrapper {
   display: flex;
   flex-wrap: wrap;

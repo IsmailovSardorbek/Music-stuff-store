@@ -7,15 +7,17 @@ import Speakers from './pages/Speakers'
 import Earphones from './pages/Earphones'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-import { products } from './data/products'
+import products from './data/products.json'
 import Context from './context/context'
+import Footer from './components/Footer/Footer'
+import ProductInfo from './pages/ProductInfo'
 
 export default function App() {
   const [shoppingCartItems, setShoppingCartItems] = useState([])
 
   useEffect(() => {
     Aos.init()
-  }, [])
+  })
 
   return (
     <Context.Provider
@@ -27,8 +29,11 @@ export default function App() {
         <Route path='/category/headphones' element={<Headphones />} />
         <Route path='/category/speakers' element={<Speakers />} />
         <Route path='/category/earphones' element={<Earphones />} />
-        <Route path='/category/headphones/:id' element={null} />
+        <Route path='/category/headphones/:id' element={<ProductInfo />} />
+        <Route path='/category/speakers/:id' element={<ProductInfo />} />
+        <Route path='/category/earphones/:id' element={<ProductInfo />} />
       </Routes>
+      <Footer />
     </Context.Provider>
   )
 }

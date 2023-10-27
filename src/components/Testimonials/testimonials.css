@@ -1,0 +1,27 @@
+.t-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  place-items: center;
+  gap: 4rem;
+}
+
+.t-right {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.text-coral {
+  color: rgb(216, 125, 74);
+}
+
+.t-left h1 {
+  font-weight: 600;
+  font-size: 47px;
+  line-height: 120%;
+  margin-bottom: 3rem;
+}
+
+.t-left p {
+  color: #777;
+  font-weight: 300;
+}

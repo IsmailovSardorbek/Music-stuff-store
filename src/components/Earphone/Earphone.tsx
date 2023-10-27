@@ -11,13 +11,16 @@ export default function Earphones() {
       <div className='earphones-section'>
         <div className='hero-container'>
           <div className='section-wrapper'>
-            <div className='e-left'>
+            <div className='e-left' data-aos='fade-right' data-aos-delay='400'>
               <img src={products[2].productImgLink} />
             </div>
-            <div className='e-right'>
+            <div className='e-right' data-aos='fade-left' data-aos-delay='400'>
               <div className='e-right-content'>
                 <h1>{products[2].name}</h1>
-                <Link to={`${products[1].id}`} className='speaker-link'>
+                <Link
+                  to={`/category/earphones/${products[2].id}`}
+                  className='speaker-link'
+                >
                   see product
                 </Link>
               </div>

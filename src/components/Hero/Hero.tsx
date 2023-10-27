@@ -27,7 +27,7 @@ export default function Hero() {
               made for the passionate music enthusiast.
             </p>
             <Link
-              to='/'
+              to='/category/headphones/'
               className='product-link'
               data-aos='zoom-in'
               data-aos-delay='800'

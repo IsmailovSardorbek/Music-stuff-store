@@ -6,6 +6,8 @@
   z-index: 9999999999;
   position: fixed;
   width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .page-nav.scroll-header {
@@ -246,5 +248,47 @@
 }
 
 .bs-icon {
-  color: rgb(216, 125, 74) ;
+  color: rgb(216, 125, 74);
+}
+
+.shopping-cart-list {
+  background-color: rgb(241, 241, 241);
+  position: absolute;
+  top: 150%;
+  right: 80%;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  min-width: 300px;
+}
+
+.shopping-cart-list img {
+  width: 50px;
+  height: 30px;
+}
+
+.cart-content ul {
+  list-style: none;
+}
+
+.cart-content ul li {
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  margin-bottom: 1.5rem;
+}
+
+.c-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.remove-btn {
+  border: 0;
+  outline: 0;
+  font-size: 30px;
+  cursor: pointer;
+  font-weight: 700;
 }
