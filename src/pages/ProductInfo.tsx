@@ -4,32 +4,34 @@ import Context from '../context/context'
 import formatter from '../utils/numberFormatter'
 
 export default function ProductInfo() {
-  const [itemQuantity, setItemQuantity] = useState(0)
-
   const { products, shoppingCartItems, setShoppingCartItems } =
     useContext(Context)
 
   const { id } = useParams()
 
-  useEffect(() => {
-    product.quantity = itemQuantity
-  }, [itemQuantity])
+  const product = products.find((p: object) => p.id === id)
 
-  const product = products.find((p: object) => {
-    return p.id === id
-  })
+  const [itemQuantity, setItemQuantity] = useState(product.quantity || 0)
+
+  // useEffect(() => {
+  //   product.quantity = itemQuantity
+  // }, [itemQuantity])
 
   const addToCart = () => {
     if (!shoppingCartItems.some((item) => item.id === product.id)) {
-      setShoppingCartItems((cartItems) => [...cartItems, product])
+      setShoppingCartItems((cartItems) =>
+        [...cartItems, product].filter((item) => item.quantity > 0)
+      )
     } else {
       setShoppingCartItems((cartItems) => {
-        return cartItems.map((item) => {
-          if (item.id === product.id) {
-            return { ...item, quantity: itemQuantity }
-          }
-          return item
-        })
+        return cartItems
+          .map((item) => {
+            if (item.id === product.id) {
+              return { ...item, quantity: itemQuantity }
+            }
+            return item
+          })
+          .filter((item) => item.quantity > 0)
       })
     }
   }

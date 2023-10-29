@@ -29,6 +29,7 @@ body {
   flex-wrap: wrap;
   overflow: hidden;
   gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .g-left {
@@ -123,6 +124,12 @@ body {
   text-transform: uppercase;
   padding: 0 1rem;
   cursor: pointer;
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 /* ================= MEDIA QUERIES ================= */
 

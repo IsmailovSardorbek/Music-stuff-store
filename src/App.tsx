@@ -5,19 +5,27 @@ import Home from './pages/Home'
 import Headphones from './pages/Headphones'
 import Speakers from './pages/Speakers'
 import Earphones from './pages/Earphones'
-import Aos from 'aos'
-import 'aos/dist/aos.css'
 import products from './data/products.json'
 import Context from './context/context'
 import Footer from './components/Footer/Footer'
 import ProductInfo from './pages/ProductInfo'
+import useLocalStorage from './hooks/useLocalStorage'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 export default function App() {
-  const [shoppingCartItems, setShoppingCartItems] = useState([])
+  const [shoppingCartItems, setShoppingCartItems] = useLocalStorage(
+    'cartItems',
+    []
+  )
 
   useEffect(() => {
     Aos.init()
-  })
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(shoppingCartItems))
+  }, [shoppingCartItems])
 
   return (
     <Context.Provider

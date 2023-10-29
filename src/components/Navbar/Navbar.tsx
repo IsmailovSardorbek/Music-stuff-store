@@ -33,10 +33,15 @@ const Navbar = () => {
   })
 
   const removeFromCart = (id) => {
-    setShoppingCartItems((cartItems) => {
-      return cartItems.filter((item) => item.id !== id)
+    setShoppingCartItems((cartItems:Array<object>) => {
+      return cartItems.filter((item:object) => item.id !== id)
     })
   }
+
+  let totalPrice = shoppingCartItems.reduce(
+    (acc, cur) => acc + cur.quantity * cur.price,
+    0
+  )
 
   return (
     <div className={`page-nav ${scrollY > 90 ? 'scroll-header' : ''}`}>
@@ -133,7 +138,7 @@ const Navbar = () => {
                   <ul>
                     {shoppingCartItems.length > 0 ? (
                       shoppingCartItems.map((cartItem) => (
-                        <li>
+                        <li key={cartItem.id}>
                           <div className='c-left'>
                             <img src={cartItem.productImgLink} />
                             <div>
@@ -169,6 +174,14 @@ const Navbar = () => {
                     )}
                   </ul>
                 </div>
+                {shoppingCartItems.length > 0 && (
+                  <div className='total-price'>
+                    Total price
+                    <h3 className='total'>
+                      {formatter.format(totalPrice).replace(/us/i, '')}
+                    </h3>
+                  </div>
+                )}
               </div>
             )}
           </div>
