@@ -4,12 +4,6 @@ import Context from '../context/context'
 import formatter from '../utils/numberFormatter'
 import { cartItem } from '../components/Navbar/Navbar'
 
-// type ContextProvider = {
-//   products: cartItem[]
-//   shoppingCartItems: cartItem[]
-//   setShoppingCartItems: () => cartItem
-// }
-
 export default function ProductInfo() {
   const { products, shoppingCartItems, setShoppingCartItems } =
     useContext<any>(Context)
