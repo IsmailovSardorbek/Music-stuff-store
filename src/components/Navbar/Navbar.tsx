@@ -11,6 +11,18 @@ import Context from '../../context/context.js'
 import formatter from '../../utils/numberFormatter.js'
 import './navbar.css'
 
+export type cartItem = {
+  id: string
+  name: string
+  features: string
+  price: number
+  productImgLink: string
+  img1Link: string
+  img2Link: string
+  img3Link: string
+  quantity: number
+}
+
 const Navbar = () => {
   const { shoppingCartItems, setShoppingCartItems } = useContext<any>(Context)
 
@@ -32,14 +44,14 @@ const Navbar = () => {
     setWindowWidth(window.innerWidth)
   })
 
-  const removeFromCart = (id) => {
-    setShoppingCartItems((cartItems:Array<object>) => {
-      return cartItems.filter((item:object) => item.id !== id)
+  const removeFromCart = (id: string) => {
+    setShoppingCartItems((cartItems: Array<cartItem>) => {
+      return cartItems.filter((item) => item.id !== id)
     })
   }
 
   let totalPrice = shoppingCartItems.reduce(
-    (acc, cur) => acc + cur.quantity * cur.price,
+    (acc: number, cur: cartItem) => acc + cur.quantity * cur.price,
     0
   )
 
@@ -137,7 +149,7 @@ const Navbar = () => {
                 <div className='cart-content'>
                   <ul>
                     {shoppingCartItems.length > 0 ? (
-                      shoppingCartItems.map((cartItem) => (
+                      shoppingCartItems.map((cartItem: cartItem) => (
                         <li key={cartItem.id}>
                           <div className='c-left'>
                             <img src={cartItem.productImgLink} />
@@ -147,7 +159,8 @@ const Navbar = () => {
                                 &nbsp; &nbsp;
                                 {
                                   shoppingCartItems.find(
-                                    (item) => item.name === cartItem.name
+                                    (item: cartItem) =>
+                                      item.name === cartItem.name
                                   ).quantity
                                 }
                                 x

@@ -1,29 +1,34 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Context from '../context/context'
 import formatter from '../utils/numberFormatter'
+import { cartItem } from '../components/Navbar/Navbar'
+
+// type ContextProvider = {
+//   products: cartItem[]
+//   shoppingCartItems: cartItem[]
+//   setShoppingCartItems: () => cartItem
+// }
 
 export default function ProductInfo() {
   const { products, shoppingCartItems, setShoppingCartItems } =
-    useContext(Context)
+    useContext<any>(Context)
 
   const { id } = useParams()
 
-  const product = products.find((p: object) => p.id === id)
+  const product = products.find((p: cartItem) => p.id === id)
 
-  const [itemQuantity, setItemQuantity] = useState(product.quantity || 0)
-
-  // useEffect(() => {
-  //   product.quantity = itemQuantity
-  // }, [itemQuantity])
+  const [itemQuantity, setItemQuantity] = useState<number>(0)
 
   const addToCart = () => {
-    if (!shoppingCartItems.some((item) => item.id === product.id)) {
-      setShoppingCartItems((cartItems) =>
-        [...cartItems, product].filter((item) => item.quantity > 0)
+    if (!shoppingCartItems.some((item: cartItem) => item.id === product.id)) {
+      setShoppingCartItems((cartItems: cartItem[]) =>
+        [...cartItems, { ...product, quantity: itemQuantity }].filter(
+          (item) => item.quantity > 0
+        )
       )
     } else {
-      setShoppingCartItems((cartItems) => {
+      setShoppingCartItems((cartItems: cartItem[]) => {
         return cartItems
           .map((item) => {
             if (item.id === product.id) {
@@ -31,7 +36,7 @@ export default function ProductInfo() {
             }
             return item
           })
-          .filter((item) => item.quantity > 0)
+          .filter((item: cartItem) => item.quantity > 0)
       })
     }
   }
@@ -91,5 +96,5 @@ export default function ProductInfo() {
 }
 
 const styles = {
-  marginTop: '150px',
+  marginTop: '120px',
 }

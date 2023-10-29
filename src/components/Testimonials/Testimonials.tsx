@@ -6,11 +6,7 @@ export default function Testimonials() {
     <div className='testimonials'>
       <div className='hero-container'>
         <div className='t-wrapper'>
-          <div
-            className='t-left'
-            data-aos='fade-down-right'
-            data-aos-delay='100'
-          >
+          <div className='t-left' data-aos='zoom-in' data-aos-delay='100'>
             <h1>
               BRINGING YOU THE <span className='text-coral'>BEST</span> AUDIO
               GEAR
@@ -25,12 +21,12 @@ export default function Testimonials() {
               audio equipment.
             </p>
           </div>
-          <div
-            className='t-right'
-            data-aos='fade-down-left'
-            data-aos-delay='100'
-          >
-            <img src={testimonialImg} />
+          <div className='t-right'>
+            <img
+              src={testimonialImg}
+              data-aos='zoom-out'
+              data-aos-delay='100'
+            />
           </div>
         </div>
       </div>

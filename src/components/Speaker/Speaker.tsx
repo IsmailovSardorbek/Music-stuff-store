@@ -16,14 +16,14 @@ export default function Speaker() {
         <div className='speaker-info' id='first'>
           <div
             className='section-left'
-            data-aos='fade-right'
-            data-aos-delay='300'
+            data-aos='fade-down'
+            data-aos-delay='200'
           >
-            {<img src={products[0].productImgLink} alt='' />}
+            {<img src={products[0].productImgLink} className='speaker-img' />}
           </div>
           <div
             className='section-right'
-            data-aos='fade-left'
+            data-aos='fade-down'
             data-aos-delay='300'
           >
             <div className='right-content'>
@@ -45,11 +45,11 @@ export default function Speaker() {
           {<img src={products[1].productImgLink} />}
           <div
             className='section-right'
-            data-aos='fade-right'
+            data-aos='zoom-in'
             data-aos-delay='200'
             style={{ zIndex: 11111 }}
           >
-            <div className='right-content' style={{ paddingLeft: '55%' }}>
+            <div className='right-content' style={{ paddingLeft: '25%' }}>
               <h1>{products[1].name}</h1>
               <Link
                 to={`/category/speakers/${products[1].id}`}

@@ -3,7 +3,7 @@
   border-radius: 10px;
   display: flex;
   min-height: 500px;
-  gap: 5rem;
+  gap: 2rem;
   flex-wrap: wrap;
   padding: 2rem 0;
   margin-bottom: 4rem;
@@ -14,9 +14,7 @@
   justify-content: center;
 }
 
-.speaker-img {
-  width: 250px;
-}
+
 
 .speaker-link {
   text-transform: uppercase;
